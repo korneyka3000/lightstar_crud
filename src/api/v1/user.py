@@ -11,7 +11,6 @@ from litestar.dto.msgspec_dto import MsgspecDTO
 from litestar.repository.filters import LimitOffset
 from pydantic import PositiveInt
 
-from src.app.models import User
 from src.app.schemas.user import UserInStructDTO, UserOutStructDTO
 from src.services import UserService, provide_user_service
 
