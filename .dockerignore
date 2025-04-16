@@ -81,4 +81,3 @@ cython_debug/
 .vscode
 *.md
 .ruff_cache
-ruff.toml
