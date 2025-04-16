@@ -6,7 +6,7 @@ export APP_WORKERS="${APP_WORKERS:-1}"
 export APP_PORT="${APP_PORT:-8000}"
 
 # Run database migrations
-litestar --app src.app:app database upgrade
+litestar --app src.main:app database upgrade --no-prompt
 
 # Start the Litestar application server
 litestar --app src.main:app run \

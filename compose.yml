@@ -17,7 +17,6 @@ services:
       context: ./
     env_file: [ .env ]
     ports: [ "${APP_PORT}:${APP_PORT}" ]
-    command: litestar --app src.main:app run --workers ${APP_WORKERS} --host=0.0.0.0 --port=${APP_PORT}
     volumes:
       - ./:/src
     depends_on: [ db ]
