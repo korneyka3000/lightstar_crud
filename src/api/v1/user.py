@@ -61,7 +61,7 @@ class UserAPI(Controller):
         data: UserInStructDTO,
         service: UserService,
     ) -> UserOutStructDTO:
-        return await service.update(data, user_id)
+        return cast(UserOutStructDTO, await service.update(data, user_id))
 
     @delete("/{user_id:int}")
     async def delete_user(
