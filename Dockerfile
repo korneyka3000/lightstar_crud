@@ -29,4 +29,6 @@ COPY --from=builder /src /src
 WORKDIR /src
 
 COPY . .
+COPY --chmod=+x startup.sh /startup.sh
 
+CMD ["sh", "-c", "/startup.sh"]
