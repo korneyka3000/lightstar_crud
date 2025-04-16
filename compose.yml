@@ -1,0 +1,26 @@
+services:
+
+  db:
+    image: postgres:15.1
+    ports:
+      - "5439:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=crud_app
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./
+    env_file: [ .env ]
+    ports: [ "${APP_PORT}:${APP_PORT}" ]
+    command: litestar --app src.main:app run --workers ${APP_WORKERS} --host=0.0.0.0 --port=${APP_PORT}
+    volumes:
+      - ./:/src
+    depends_on: [ db ]
+
+volumes:
+  db_volume:
